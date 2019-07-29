@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bahianita&display=swap" rel="stylesheet">
+
+</head>
+<div>
+    <div th:replace="base :: navbar"></div>
+</div>
+<body>
+
+<div class="container">
+    <form action="#"
+          th:action="@{/process}"
+          th:object="${message}"
+          method="post">
+        <div class="form-group">
+            <label class="post-label" for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Message title" th:field="*{title}">
+            <span class="input-error" th:if="${#fields.hasErrors('title')}"
+                  th:errors="*{title}"></span><br />
+        </div>
+        <div class="form-group">
+            <label class="post-label" for="postedBy">Username</label>
+            <input type="text" class="form-control" id="postedBy" placeholder="Username" th:field="*{postedBy}">
+            <span class="input-error" th:if="${#fields.hasErrors('postedBy')}"
+                  th:errors="*{postedBy}"></span>
+        </div>
+        <div class="form-group">
+            <label class="post-label" for="content">Message</label>
+            <textarea class="form-control" id="content" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, accusantium adipisci consequuntur et illum inventore iure maiores necessitatibus quae. Aliquid asperiores aut autem explicabo fugit impedit inventore, ipsum nisi omnis." th:field="*{content}"></textarea>
+            <span class="input-error" th:if="${#fields.hasErrors('content')}"
+                  th:errors="*{content}"></span>
+        </div>
+        <!--<div class="form-group">-->
+        <!--<label class="post-label" for="postedDate"></label>-->
+        <!--<input type="text" class="form-control" id="postedDate" value="${#index.timeStamp}">-->
+
+
+        <!--</div>-->
+
+        <div class="form-group">
+            <label class="post-label" for="postedDate">Message</label>
+            <input type="date" class="form-control" id="postedDate" th:field="*{postedDate}"/>
+            <span th:if="${#fields.hasErrors('postedDate')}"
+                  th:errors="*{postedDate}"></span>
+        </div>
+        <input type="submit" value="Submit"/>
+    </form>
+</div>
+
+<div th:replace="base :: bootstrap"></div>
+</body>
+
+</html>

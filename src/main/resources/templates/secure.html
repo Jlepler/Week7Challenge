@@ -2,17 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
                 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:replace="base :: Meta">...</th:block>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Title</title>
+
 </head>
+<div th:replace="base :: navbar"></div>
 <body>
-<th:block th:replace="base :: nav">...</th:block>
-<h2>Secure</h2>
+
+<h2>Welcome</h2>
 <a href="/logout">logout</a>
 <h4>email</h4>
 <p th:text="${user.email}"></p><br/>
 <h4>last name</h4>
 <p th:text="${user.lastName}"></p>
-<th:block th:replace="base :: bootstrap">...</th:block>
+<div th:replace="base :: bootstrap"></div>
 </body>
 </html>

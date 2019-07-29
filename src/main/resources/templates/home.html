@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Title</title>
+
+</head>
+<div th:replace="base :: navbar"></div>
+<body>
+
+<div class="card-container-fluid">
+    <div class="row">
+        <div class="col-4 card" style="padding: 0px" th:each="message : ${messages}">
+            <div class="card-body">
+                <h3 class="card-title" th:inline="text">Posted By: [[${message.postedBy}]]</h3>
+                <h4 class="card-text" th:inline="text">[[${message.title}]]"</h4>
+                <h5 th:inline="text">Message: [[${message.content}]]</h5>
+                <h6 th:inline="text">Posted on: [[${message.postedDate}]]</h6><br/>
+                <p>
+                    <a class="btn btn-primary" th:href="@{/update/{id}(id=${message.id})}">Update</a>
+                    <a class="btn btn-primary" th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+                    <a class="btn btn-primary" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div th:replace="base :: bootstrap"></div>
+</body>
+</html>

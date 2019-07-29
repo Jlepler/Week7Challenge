@@ -2,11 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
                 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:replace="base :: Meta">...</th:block>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Title</title>
+
 </head>
+<div th:replace="base :: navbar"></div>
 <body>
-<th:block th:replace="base :: nav">...</th:block>
+
 <h1>Login Page</h1>
 <div th:if="${param.error}">
     invalid username or password
@@ -16,7 +19,7 @@
     You have been logged out
 </div>
 
-<form th:action="@{/login}" method="post">
+<form th:action="@{/login}" method="post" class="form-group">
     <div><label>User Name:  <input type="text" name="username"/></label></div>
 
     <div><label>Password:  <input type="password" name="password"/></label></div>
@@ -24,6 +27,6 @@
     <div> <input type="submit" value="Sign in"/></div>
 </form>
 
-<th:block th:replace="base :: bootstrap">...</th:block>
+<div th:replace="base :: bootstrap"></div>
 </body>
 </html>

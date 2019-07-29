@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
                 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:replace="base :: Meta">...</th:block>
     <title>Title</title>
 </head>
+<div th:insert="base :: navbar"></div>
 <body>
 
 
@@ -14,6 +14,6 @@
 <p th:text="${user.email}"></p><br/>
 <h4>last name</h4>
 <p th:text="${user.lastName}"></p>
-<th:block th:replace="base :: bootstrap">...</th:block>
+<div th:replace="base :: bootstrap"></div>
 </body>
 </html>

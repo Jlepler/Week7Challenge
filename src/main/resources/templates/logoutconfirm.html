@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Title</title>
+    <title>Logout Page</title>
 </head>
-<div th:replace="base :: navbar"></div>
 <body>
+<div th:replace="base :: navbar"></div>
 
-<h2>Insecure Page</h2>
-<a href="/secure">Secure Page</a>
+<div class="container">
+    <h1>Logout Page</h1>
+    <h2>You have been successfully logged out.</h2>
+    <p></p>
+    <a href="/login">Log in</a>
+    <a href="/">Home</a>
+</div>
+
 <div th:replace="base :: bootstrap"></div>
 </body>
 </html>
