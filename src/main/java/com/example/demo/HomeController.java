@@ -22,6 +22,13 @@ public class HomeController {
     @Autowired
     MessageRepository messageRepository;
 
+    @RequestMapping("/home")
+    public String index(Model model){
+        model.addAttribute("messages", messageRepository.findAll());
+        return "home";
+    }
+
+
     @GetMapping("/register")
     public String showRegistrationPage(Model model){
         model.addAttribute("user",  new User());
@@ -63,11 +70,11 @@ public class HomeController {
         return principal.getName();
     }
 
-    @RequestMapping("/home")
-    public String index(Model model){
-        model.addAttribute("messages", messageRepository.findAll());
-        return "home";
-    }
+//    @RequestMapping("/home")
+//    public String index(Model model){
+//        model.addAttribute("messages", messageRepository.findAll());
+//        return "home";
+//    }
 
     @RequestMapping("/login")
     public String login(){
