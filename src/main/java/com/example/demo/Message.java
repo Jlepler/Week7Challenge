@@ -7,11 +7,13 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 
 
 @Entity
+@Table(name="Message_Data")
 public class Message {
 
     @Id
@@ -20,27 +22,27 @@ public class Message {
 
     @NotNull
     @Size(min=4, max=20)
+    @Column(name="title")
     private String title;
 
     @NotNull
     @Size(min=1,max=200)
+    @Column(name="content")
     private String content;
 
     @NotNull
+    @Column(name="posted_date")
     private String postedDate;
 
     @NotNull
-    @Size(min=3,max=20)
-    private String postedBy;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private User user;
 
-
-
-
-    public Message(@NotNull @Size(min = 4, max = 20) String title, @NotNull @Size(min = 1, max = 140) String content, @NotNull String postedDate, @NotNull @Size(min = 3, max = 20) String postedBy) {
+    public Message(@NotNull @Size(min = 4, max = 20) String title, @NotNull @Size(min = 1, max = 200) String content, @NotNull String postedDate, @NotNull @Size(min = 3, max = 20) User user) {
         this.title = title;
         this.content = content;
         this.postedDate = postedDate;
-        this.postedBy = postedBy;
+        this.user = user;
     }
 
     public Message() {
@@ -78,11 +80,19 @@ public class Message {
         this.postedDate = postedDate;
     }
 
-    public String getPostedBy() {
-        return postedBy;
+//    public String getPostedBy() {
+//        return postedBy;
+//    }
+//
+//    public void setPostedBy(String postedBy) {
+//        this.postedBy = postedBy;
+//    }
+
+    public User getUser() {
+        return user;
     }
 
-    public void setPostedBy(String postedBy) {
-        this.postedBy = postedBy;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name="User_Data")
@@ -34,11 +35,12 @@ public class User {
     @Column(name="username")
     private String username;
 
+    @OneToMany(mappedBy = "user")
+    public Set<Message> messages;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),
         inverseJoinColumns = @JoinColumn(name="role_id")) private Collection<Role> roles;
-
-
 
 
     public User(){}
@@ -117,4 +119,14 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
+    }
+
+
 }

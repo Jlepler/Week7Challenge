@@ -24,12 +24,19 @@
             <span class="input-error" th:if="${#fields.hasErrors('title')}"
                   th:errors="*{title}"></span><br />
         </div>
-        <div class="form-group">
-            <label class="post-label" for="postedBy">Username</label>
-            <input type="text" class="form-control" id="postedBy" placeholder="Username" th:field="*{postedBy}">
-            <span class="input-error" th:if="${#fields.hasErrors('postedBy')}"
-                  th:errors="*{postedBy}"></span>
-        </div>
+        <label for="category">Posted By</label><br  />
+        <select id="category" th:field="*{user}">
+            <option th:each="currentUser:${user}"
+                    th:text="${currentUser.username}"
+                    th:value="${currentUser.id}">
+            </option>
+        </select>
+        <!--<div class="form-group">-->
+            <!--<label class="post-label" for="postedBy">Username</label>-->
+            <!--<input type="text" class="form-control" id="postedBy" placeholder="Username" th:field="*{postedBy}">-->
+            <!--<span class="input-error" th:if="${#fields.hasErrors('postedBy')}"-->
+                  <!--th:errors="*{postedBy}"></span>-->
+        <!--</div>-->
         <div class="form-group">
             <label class="post-label" for="content">Message</label>
             <textarea class="form-control" id="content" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, accusantium adipisci consequuntur et illum inventore iure maiores necessitatibus quae. Aliquid asperiores aut autem explicabo fugit impedit inventore, ipsum nisi omnis." th:field="*{content}"></textarea>

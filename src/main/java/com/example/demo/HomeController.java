@@ -41,19 +41,20 @@ public class HomeController {
     }
 
     @GetMapping("/add")
-    public String messageForm(Model model){
+    public String messageForm(@ModelAttribute Message message, Model model, Principal principal, User user){
         model.addAttribute("message", new Message());
+        model.addAttribute("user", userRepository.findByUsername(principal.getName()));
         return "messageform";
     }
 
     @PostMapping("/process")
     public String processMessage(@Valid Message message,
-                                 BindingResult result){
+                                 BindingResult result, Principal principal){
         if (result.hasErrors()){
             return "messageform";
         }
         messageRepository.save(message);
-        return("redirect:/");
+        return("home");
     }
 
     @GetMapping("/username")
@@ -100,6 +101,10 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @RequestMapping("/logout")
+    public String logoutconfirm(){
+        return "logoutconfirm";
+    }
 
 
 }
